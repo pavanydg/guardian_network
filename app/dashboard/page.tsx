@@ -5,32 +5,32 @@ import { Bell, Settings, LogOut, Menu, Map, AlertTriangle, BarChart2, MessageSqu
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import IncidentMap from './IncidentMap'
-import AlertSystem from './AlertSystem'
-import AnalyticsPanel from './AnalyticsPanel'
-import CommunicationTools from './CommunicationTools'
-import CitizenReports from './CitizenReports'
-import OfficerManagement from './OfficerManagement'
-import AdminPanel from './AdminPanel'
+// import IncidentMap from './IncidentMap'
+// import AlertSystem from './AlertSystem'
+// import AnalyticsPanel from './AnalyticsPanel'
+// import CommunicationTools from './CommunicationTools'
+// import CitizenReports from './CitizenReports'
+// import OfficerManagement from './OfficerManagement'
+// import AdminPanel from './AdminPanel'
 
-const menuItems = [
-  { name: 'Incident Map', icon: Map, component: IncidentMap },
-  { name: 'Alert System', icon: AlertTriangle, component: AlertSystem },
-  { name: 'Analytics', icon: BarChart2, component: AnalyticsPanel },
-  { name: 'Communication', icon: MessageSquare, component: CommunicationTools },
-  { name: 'Citizen Reports', icon: FileText, component: CitizenReports },
-  { name: 'Officer Management', icon: Users, component: OfficerManagement },
-  { name: 'Admin Panel', icon: ShieldCheck, component: AdminPanel },
-]
+// const menuItems = [
+//   { name: 'Incident Map', icon: Map, component: IncidentMap },
+//   { name: 'Alert System', icon: AlertTriangle, component: AlertSystem },
+//   { name: 'Analytics', icon: BarChart2, component: AnalyticsPanel },
+//   { name: 'Communication', icon: MessageSquare, component: CommunicationTools },
+//   { name: 'Citizen Reports', icon: FileText, component: CitizenReports },
+//   { name: 'Officer Management', icon: Users, component: OfficerManagement },
+//   { name: 'Admin Panel', icon: ShieldCheck, component: AdminPanel },
+// ]
 
 export default function DashboardLayout() {
   const [activeComponent, setActiveComponent] = useState('Incident Map')
 
-  const ActiveComponent = menuItems.find(item => item.name === activeComponent)?.component || IncidentMap
+//   const ActiveComponent = menuItems.find(item => item.name === activeComponent)?.component || IncidentMap
   
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      {/* <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -85,7 +85,7 @@ export default function DashboardLayout() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <ActiveComponent />
       </main>
