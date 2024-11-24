@@ -15,7 +15,6 @@ import Link from 'next/link'
 
 const Navbar = () => {
   const menuItems = [
-    { name: 'Incident Map', icon: Map, url: "incidentmap", component: IncidentMap },
     { name: 'Alert System', icon: AlertTriangle, url: "alertsystem", component: AlertSystem },
     { name: 'Analytics', icon: BarChart2, url: "analyticspanel", component: AnalyticsPanel },
     { name: 'Communication', icon: MessageSquare, url: "communicationtools", component: CommunicationTools },
@@ -45,21 +44,11 @@ const Navbar = () => {
                     {item.name}
                   </div>
                 </Link>
-                // <Button
-                //   key={item.name}
-                //   variant={activeComponent === item.name ? 'secondary' : 'ghost'}
-                //   className="w-full justify-start"
-                //   onClick={() => setActiveComponent(item.name)}
-                // >
-                //   <item.icon className="mr-2 h-4 w-4" />
-                //   {item.name}
-                // </Button>
               ))}
             </ScrollArea>
           </nav>
         </SheetContent>
       </Sheet>
-
       <Link href="/" className="font-bold text-xl text-gray-800 dark:text-white ml-2 lg:ml-0">Guardian Network</Link>
     </div>
     {/* <div className="hidden lg:flex lg:items-center lg:space-x-4"> */}
@@ -70,14 +59,6 @@ const Navbar = () => {
           <item.icon className="mr-2 h-4 w-4" />
           {item.name}
         </Link>
-        // <Button
-        //   key={item.name}
-        //   variant={activeComponent === item.name ? 'secondary' : 'ghost'}
-        //   onClick={() => setActiveComponent(item.name)}
-        // >
-        //   <item.icon className="mr-2 h-4 w-4" />
-        //   {item.name}
-        // </Button>
       ))}
     </div>
   </div>

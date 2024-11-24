@@ -23,9 +23,9 @@ interface IncidentMapProps {
 }
 
 const DEFAULT_INCIDENTS = [
-  { id: 1, type: 'Harassment', lat: 12.9716, lng: 77.5946, severity: 'medium', timestamp: '2024-03-23 14:30' },
-  { id: 2, type: 'Theft', lat: 12.9716, lng: 77.5746, severity: 'high', timestamp: '2024-03-23 15:45' },
-  { id: 3, type: 'Assault',lat: 12.9516, lng: 77.5946, severity: 'critical', timestamp: '2024-03-23 16:20' },
+  { id: 1, type: 'Harassment', lat: 40.7128, lng: -74.0060, severity: 'medium', timestamp: '2024-03-23 14:30' },
+  { id: 2, type: 'Theft', lat: 40.7282, lng: -73.9942, severity: 'high', timestamp: '2024-03-23 15:45' },
+  { id: 3, type: 'Assault', lat: 40.7589, lng: -73.9851, severity: 'critical', timestamp: '2024-03-23 16:20' },
 ];
 
 const IncidentMap: React.FC<IncidentMapProps> = ({ 
@@ -37,8 +37,26 @@ const IncidentMap: React.FC<IncidentMapProps> = ({
   const [mapLoaded, setMapLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral | null>(null);
+  const [data,setData] = useState();
 
   const mapId = 'incident-map';
+
+  const fetchData = async () => {
+    try{
+      const response = await fetch("https://sensors-api.onrender.com/stream/data")
+      if(!response.ok){
+        throw new Error("Failed to fetch data");
+      }
+      const dat = await response.json();
+      setData(dat);
+    }catch(err){
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[])
 
   useEffect(() => {
     // Get user's location when component mounts
@@ -67,7 +85,7 @@ const IncidentMap: React.FC<IncidentMapProps> = ({
     if (!mapLoaded || !window.google) return;
 
     const map = new window.google.maps.Map(document.getElementById(mapId)!, {
-      center: {  lat: 12.9716, lng: 77.5946 },
+      center: { lat: 40.7128, lng: -74.0060 },
       zoom: 13,
       styles: [
         {
@@ -87,7 +105,7 @@ const IncidentMap: React.FC<IncidentMapProps> = ({
         position: userLocation,
         map: map,
         icon: {
-          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          path: google.maps.SymbolPath.CIRCLE,
           scale: 8,
           fillColor: '#4285F4',
           fillOpacity: 1,
