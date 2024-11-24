@@ -1,18 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { MapPin, Clock, MoreVertical, PhoneCall } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { getOfficers } from '@/lib/actions'
 
 export default function OfficerManagement() {
   const [officers] = useState([
-    { id: 1, name: 'John Doe', status: 'Available', location: 'Downtown', avatar: '/placeholder-avatar.jpg', badgeNumber: '12345' },
-    { id: 2, name: 'Jane Smith', status: 'On Duty', location: 'Uptown', avatar: '/placeholder-avatar.jpg', badgeNumber: '67890' },
-    { id: 3, name: 'Mike Johnson', status: 'Responding', location: 'Midtown', avatar: '/placeholder-avatar.jpg', badgeNumber: '24680' },
+    { id: 1, name: 'John Doe', status: 'Available', location: 'Basavangudi', avatar: '/placeholder-avatar.jpg', badgeNumber: '12345' },
+    { id: 2, name: 'Jane Smith', status: 'On Duty', location: 'Hanumanthanagar', avatar: '/placeholder-avatar.jpg', badgeNumber: '67890' },
+    { id: 3, name: 'Mike Johnson', status: 'Responding', location: 'Majestic', avatar: '/placeholder-avatar.jpg', badgeNumber: '24680' },
   ])
 
   return (
